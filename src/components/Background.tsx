@@ -97,7 +97,7 @@ export function Background() {
         {/* 2) Luna semitransparente (z-10) */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 z-10">
           <img
-            src="/src/assets/moon.png"
+            src="/assets/moon.png"
             alt="Luna"
             className="w-64 h-64 opacity-30"
           />
@@ -123,7 +123,7 @@ export function Background() {
         {petals.map((p) => (
           <img
             key={p.id}
-            src="/src/assets/petal.png"
+            src="/assets/petal.png"
             alt="Pétalo flotando"
             className="absolute petal opacity-80"
             style={{
