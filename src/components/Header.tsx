@@ -1,11 +1,9 @@
-// src/components/Header.tsx
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Inyectar la fuente "Great Vibes"
   useEffect(() => {
     const link = document.createElement("link");
     link.href =
@@ -30,7 +28,6 @@ export function Header() {
         .font-script {
           font-family: 'Great Vibes', cursive;
         }
-        /* Icono hamburguesa ↔️ X */
         .burger {
           transition: transform 0.3s ease, opacity 0.3s ease;
         }
@@ -51,15 +48,22 @@ export function Header() {
           left: 0;
           transition: transform 0.3s ease, top 0.3s ease;
         }
+        .animate-spin-slow {
+          animation: spin 6s linear infinite;
+        }
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
       `}</style>
 
-      <header className="w-full px-6 py-4 backdrop-blur-md bg-gradient-to-br from-purple-900/30 via-fuchsia-900/30 to-rose-900/30 border-b border-white/20 shadow-lg z-20 relative">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          {/* Logo */}
-          <div className="flex items-center gap-3">
+      <header className="w-full px-6 py-3 bg-gradient-to-br from-purple-900/30 via-fuchsia-900/30 to-rose-900/30 border-b border-white/20 shadow-lg z-20 relative backdrop-blur-md">
+        {/* Título, ícono y logo en una sola fila */}
+        <div className="flex flex-col items-center">
+          <div className="flex items-center justify-center gap-2">
             <div className="text-pink-300 animate-spin-slow">
               <svg
-                className="w-8 h-8"
+                className="w-6 h-6"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -72,18 +76,23 @@ export function Header() {
                 />
               </svg>
             </div>
-            <div className="text-center sm:text-left">
-              <h1 className="text-3xl sm:text-4xl font-script text-pink-300 drop-shadow-md tracking-wide hover:text-pink-400 transition duration-300">
-                Magic Ari
-              </h1>
-              <p className="text-sm text-pink-100 italic">
-                Donde las flores tienen alma ✨
-              </p>
-            </div>
+            <h1 className="text-2xl sm:text-3xl font-script text-pink-300 drop-shadow-md tracking-wide hover:text-pink-400 transition duration-300">
+              Magic Ari
+            </h1>
+            <img
+              src="/assets/logo.png"
+              alt="Logo Magic Ari"
+              className="w-16 h-16 sm:w-20 sm:h-20 ml-2 rounded-full border-4 border-white shadow-xl"
+            />
           </div>
+          <p className="text-sm text-pink-100 italic mt-1">
+            Donde las flores tienen alma ✨
+          </p>
+        </div>
 
-          {/* Menú escritorio */}
-          <nav className="hidden sm:flex gap-4">
+        {/* Navegación centrada en escritorio */}
+        <div className="mt-4 flex justify-center">
+          <nav className="hidden sm:flex gap-3">
             {navItems.map(({ label, to }) => (
               <Link
                 key={label}
@@ -94,11 +103,13 @@ export function Header() {
               </Link>
             ))}
           </nav>
+        </div>
 
-          {/* Botón móvil */}
+        {/* Botón hamburguesa móvil */}
+        <div className="sm:hidden mt-2 flex justify-center">
           <button
             onClick={() => setMenuOpen((o) => !o)}
-            className="sm:hidden relative text-pink-200 hover:text-pink-400 transition p-2"
+            className="relative text-pink-200 hover:text-pink-400 transition p-2"
           >
             <div
               className={`burger w-6 h-[2px] bg-current ${
@@ -110,13 +121,13 @@ export function Header() {
 
         {/* Menú móvil */}
         {menuOpen && (
-          <nav className="sm:hidden mt-4 flex flex-col gap-3 px-4">
+          <nav className="sm:hidden mt-2 flex flex-col gap-2 px-4 items-center">
             {navItems.map(({ label, to }) => (
               <Link
                 key={label}
                 to={to}
                 onClick={() => setMenuOpen(false)}
-                className="block w-full text-center px-4 py-2 bg-white/10 hover:bg-white/20 text-white/90 rounded-full backdrop-blur-sm transition"
+                className="w-full text-center px-4 py-2 bg-white/10 hover:bg-white/20 text-white/90 rounded-full backdrop-blur-sm transition"
               >
                 {label}
               </Link>
