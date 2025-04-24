@@ -15,7 +15,7 @@ export type CarruselItem = {
 export const floresDestacadas: CarruselItem[] = [
   {
     id: "rosa-encantada",
-    src: "/src/assets/flores/rosa-encantada.png",
+    src: "/assets/flores/rosa-encantada.png",
     alt: "Rosa encantada con gotas de rocío",
     titulo: "Rosa Encantada",
     descripcion: "Simboliza el amor eterno y la elegancia sutil.",
@@ -27,7 +27,7 @@ export const floresDestacadas: CarruselItem[] = [
   },
   {
     id: "girasol-magico",
-    src: "/src/assets/flores/girasol-magico.png",
+    src: "/assets/flores/girasol-magico.png",
     alt: "Girasol mágico iluminado por el sol",
     titulo: "Girasol Mágico",
     descripcion: "Una flor que sonríe al sol, llena de alegría.",
@@ -39,7 +39,7 @@ export const floresDestacadas: CarruselItem[] = [
   },
   {
     id: "tulipan-rosado",
-    src: "/src/assets/flores/tulipan-rosado.png",
+    src: "/assets/flores/tulipan-rosado.png",
     alt: "Tulipán rosado en campo abierto",
     titulo: "Tulipán Rosado",
     descripcion: "Pureza, calma y un toque de romanticismo.",
@@ -51,7 +51,7 @@ export const floresDestacadas: CarruselItem[] = [
   },
   {
     id: "lirio-celestial",
-    src: "/src/assets/flores/lirio-celestial.png",
+    src: "/assets/flores/lirio-celestial.png",
     alt: "Lirio azul en un campo brillante",
     titulo: "Lirio Celestial",
     descripcion: "Representa la sabiduría divina y la serenidad interior.",
@@ -63,7 +63,7 @@ export const floresDestacadas: CarruselItem[] = [
   },
   {
     id: "orquidea-mistica",
-    src: "/src/assets/flores/orquidea-mistica.png",
+    src: "/assets/flores/orquidea-mistica.png",
     alt: "Orquídea púrpura con luz tenue",
     titulo: "Orquídea Mística",
     descripcion: "Elegancia exótica que florece en el misterio.",
@@ -75,7 +75,7 @@ export const floresDestacadas: CarruselItem[] = [
   },
   {
     id: "dalia-carmesí",
-    src: "/src/assets/flores/dalia-carmesi.png",
+    src: "/assets/flores/dalia-carmesi.png",
     alt: "Dalia de pétalos intensamente rojos",
     titulo: "Dalia Carmesí",
     descripcion: "Fuerza, pasión y belleza vibrante en una sola flor.",
@@ -87,7 +87,7 @@ export const floresDestacadas: CarruselItem[] = [
   },
   {
     id: "jazmin-nocturno",
-    src: "/src/assets/flores/jazmin-nocturno.png",
+    src: "/assets/flores/jazmin-nocturno.png",
     alt: "Jazmín blanco brillando en la noche",
     titulo: "Jazmín Nocturno",
     descripcion: "Aroma que despierta los sueños bajo la luna.",
@@ -99,7 +99,7 @@ export const floresDestacadas: CarruselItem[] = [
   },
   {
     id: "hibisco-radiante",
-    src: "/src/assets/flores/hibisco-radiante.png",
+    src: "/assets/flores/hibisco-radiante.png",
     alt: "Hibisco rojo al atardecer",
     titulo: "Hibisco Radiante",
     descripcion: "Vitalidad tropical que enciende el alma.",
@@ -111,7 +111,7 @@ export const floresDestacadas: CarruselItem[] = [
   },
   {
     id: "cerezo-en-flor",
-    src: "/src/assets/flores/cerezo-en-flor.png",
+    src: "/assets/flores/cerezo-en-flor.png",
     alt: "Flores de cerezo en primavera",
     titulo: "Cerezo en Flor",
     descripcion: "Belleza efímera que celebra la vida en su instante más puro.",
