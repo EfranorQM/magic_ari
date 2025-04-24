@@ -4,7 +4,6 @@ import { floresDestacadas } from "../constants/carruselData";
 export function Carrusel() {
   const [actual, setActual] = useState(0);
   const total = floresDestacadas.length;
-
   const flor1 = floresDestacadas[actual];
   const flor2 = floresDestacadas[(actual + 1) % total];
   const flor3 = floresDestacadas[(actual + 2) % total];
