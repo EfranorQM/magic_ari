@@ -16,25 +16,25 @@ export const Header: React.FC = () => {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      {/* Cinta superior glass */}
-      <div className="backdrop-blur-md bg-white/10 border-b border-white/10">
+      {/* Banda glass sobre pastel */}
+      <div className="backdrop-blur-md bg-[#EAF3E0]/50 border-b border-green-200/40">
         <div className="mx-auto max-w-6xl flex items-center justify-between h-14 sm:h-16 px-4 sm:px-6">
           {/* Logo + título */}
           <Link
             to="/"
-            className="flex items-center gap-2 sm:gap-3 text-white hover:text-pink-300 transition"
+            className="flex items-center gap-3 text-green-900 hover:text-pink-600 transition"
           >
             <img
               src="/assets/logo.png"
-              alt="Logo Magic Ari"
-              className="w-7 h-7 sm:w-9 sm:h-9 rounded-full object-cover"
+              alt="Logo Entre Pétalos"
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover"
             />
             <span className="text-lg sm:text-xl font-semibold whitespace-nowrap">
-              Magic Ari
+              Entre Pétalos
             </span>
           </Link>
 
-          {/* Links escritorio */}
+          {/* Nav escritorio */}
           <nav className="hidden md:flex gap-6">
             {navItems.map(({ label, to }) => {
               const active = pathname === to;
@@ -43,12 +43,12 @@ export const Header: React.FC = () => {
                   key={label}
                   to={to}
                   className={`relative text-sm sm:text-base ${
-                    active ? "text-pink-300" : "text-white"
-                  } hover:text-pink-300 transition group`}
+                    active ? "text-pink-600" : "text-green-800"
+                  } hover:text-pink-600 transition group`}
                 >
                   {label}
                   <span
-                    className={`absolute bottom-0 left-0 h-[2px] bg-pink-300 transition-all duration-300 ${
+                    className={`absolute bottom-0 left-0 h-[2px] bg-pink-600 transition-all duration-300 ${
                       active ? "w-full" : "w-0 group-hover:w-full"
                     }`}
                   />
@@ -57,10 +57,10 @@ export const Header: React.FC = () => {
             })}
           </nav>
 
-          {/* Botón hamburguesa */}
+          {/* Botón móvil */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden text-white hover:text-pink-300 transition p-2"
+            className="md:hidden text-green-800 hover:text-pink-600 transition p-2"
             aria-label="Menú"
           >
             {menuOpen ? <X size={26} /> : <Menu size={26} />}
@@ -68,22 +68,22 @@ export const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Panel móvil deslizable */}
+      {/* Panel móvil */}
       <aside
-        className={`fixed top-0 right-0 h-full w-64 bg-white/10 backdrop-blur-md border-l border-white/15 shadow-xl transform transition-transform duration-300 md:hidden
+        className={`fixed top-0 right-0 h-full w-64 bg-[#EAF3E0]/70 backdrop-blur-md border-l border-green-200/40 shadow-md transform transition-transform duration-300 md:hidden
         ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
       >
-        <div className="flex items-center justify-between h-14 px-4 border-b border-white/10">
-          <span className="text-white font-semibold">Menú</span>
+        <div className="flex items-center justify-between h-14 px-4 border-b border-green-200/40">
+          <span className="text-green-900 font-semibold">Menú</span>
           <button
             onClick={() => setMenuOpen(false)}
-            className="text-white hover:text-pink-300 transition p-1"
+            className="text-green-800 hover:text-pink-600 transition p-1"
             aria-label="Cerrar"
           >
             <X size={22} />
           </button>
         </div>
-        <ul className="flex flex-col divide-y divide-white/10">
+        <ul className="flex flex-col divide-y divide-green-200/30">
           {navItems.map(({ label, to }) => {
             const active = pathname === to;
             return (
@@ -92,8 +92,8 @@ export const Header: React.FC = () => {
                   to={to}
                   onClick={() => setMenuOpen(false)}
                   className={`block px-6 py-4 ${
-                    active ? "text-pink-300" : "text-white"
-                  } hover:text-pink-300 transition`}
+                    active ? "text-pink-600" : "text-green-800"
+                  } hover:text-pink-600 transition`}
                 >
                   {label}
                 </Link>

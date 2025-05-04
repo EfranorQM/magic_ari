@@ -6,18 +6,18 @@ import { Flower2, Search, RotateCw } from "lucide-react";
 export const Intro: React.FC = () => {
   const features = [
     {
-      icon: <Flower2 size={28} className="text-pink-300" />,
+      icon: <Flower2 size={28} className="text-green-800" />,
       title: "Variedad única",
       desc: "Más de 9 flores seleccionadas para ti.",
     },
     {
-      icon: <Search size={28} className="text-pink-300" />,
+      icon: <Search size={28} className="text-green-800" />,
       title: "Búsqueda ágil",
       desc: "Filtra por nombre o categoría al instante.",
     },
     {
-      icon: <RotateCw size={28} className="text-pink-300" />,
-      title: "Flip‑cards interactivo",
+      icon: <RotateCw size={28} className="text-green-800" />,
+      title: "Flip-cards interactivo",
       desc: "Gira cada tarjeta para ver datos y cuidados.",
     },
   ];
@@ -26,18 +26,27 @@ export const Intro: React.FC = () => {
     <section className="bg-transparent px-4 pt-24 pb-16 relative z-10">
       {/* Encabezado */}
       <header className="max-w-3xl mx-auto text-center space-y-6">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
-          Bienvenido a <span className="text-pink-300">Magic Ari</span>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-green-900">
+          Bienvenido a <span className="text-pink-500">Entre Pétalos</span>
         </h1>
-        <p className="text-pink-100 text-base sm:text-lg md:text-xl leading-relaxed">
+
+        {/* Logo centrado */}
+        <div className="flex justify-center mt-6">
+          <img
+            src="/assets/logo.png"
+            alt="Logo Magic Ari"
+            className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full object-cover shadow-xl"
+          />
+        </div>
+
+        <p className="text-green-800 text-base sm:text-lg md:text-xl leading-relaxed">
           En este rincón encantado, cada flor es una historia, cada aroma una
           emoción. Descubre la belleza de lo natural hecha arte.
         </p>
 
-        {/* CTA */}
         <Link
           to="/flores"
-          className="inline-block px-6 sm:px-8 py-3 bg-pink-500 hover:bg-pink-400 text-white font-medium rounded-full transition"
+          className="inline-block px-6 sm:px-8 py-3 bg-pink-600 hover:bg-pink-500 text-white font-medium rounded-full transition"
         >
           Explorar flores
         </Link>
@@ -48,18 +57,20 @@ export const Intro: React.FC = () => {
         {features.map(({ icon, title, desc }) => (
           <article
             key={title}
-            className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 shadow-md hover:shadow-lg transition hover:-translate-y-1"
+            className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-md hover:shadow-lg transition hover:-translate-y-1"
           >
             <div className="mb-3">{icon}</div>
-            <h3 className="text-lg font-semibold text-white mb-1">{title}</h3>
-            <p className="text-pink-100 text-sm">{desc}</p>
+            <h3 className="text-lg font-semibold text-green-900 mb-1">
+              {title}
+            </h3>
+            <p className="text-green-800 text-sm">{desc}</p>
           </article>
         ))}
       </div>
 
       {/* Indicador scroll */}
       <div className="mt-14 flex justify-center">
-        <span className="text-pink-200 text-2xl animate-fade-bounce">↓</span>
+        <span className="text-green-700 text-2xl animate-fade-bounce">↓</span>
       </div>
 
       {/* Animación ↓ suave */}

@@ -42,84 +42,78 @@ export function FloresPage() {
   }, [filtered, sortOrder]);
 
   return (
-    <section className="py-12 px-4 max-w-6xl mx-auto">
-      {/* CSS para flip-card */}
+    <section className="bg-transparent px-4 pt-32 pb-16 relative z-10">
       <style>{`
-        .flip-card {
-          aspect-ratio: 1 / 1;
-          width: 100%;
-          perspective: 1000px;
-        }
-        .flip-card-inner {
-          position: relative;
-          width: 100%;
-          height: 100%;
-          text-align: center;
-          transition: transform 0.6s;
-          transform-style: preserve-3d;
-        }
-        .flip-card:hover .flip-card-inner {
-          transform: rotateY(180deg);
-        }
-        .flip-card-front,
-        .flip-card-back {
-          position: absolute;
-          top: 0; left: 0;
-          width: 100%;
-          height: 100%;
-          backface-visibility: hidden;
-        }
-        .flip-card-back {
-          transform: rotateY(180deg);
-          background: rgba(255,255,255,0.1);
-          padding: 1rem;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-        }
-      `}</style>
+  .flip-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    perspective: 1200px;
+  }
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease-in-out;
+  }
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  .flip-card-front {
+    /* nada extra: la imagen ocupa todo el espacio */
+  }
+  .flip-card-back {
+    transform: rotateY(180deg);
+    background-color: rgba(234, 243, 224, 0.85); /* pastel #EAF3E0 */
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #2F4F4F; /* verde oscuro para el texto */
+  }
+`}</style>
 
-      {/* Breadcrumbs */}
-      <nav className="text-sm text-white/70 mb-8">
-
-      </nav>
 
       {/* Título + Controles */}
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-8 mb-10">
-        <h2 className="text-4xl font-script text-pink-300 drop-shadow-md">
-          Todas Nuestras Flores
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-6 mb-10 pg-1">
+        <h2 className="text-3xl sm:text-4xl font-bold text-green-900">
+          Todas nuestras flores
         </h2>
 
         <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
           {/* Buscador */}
           <input
             type="text"
-            placeholder="🔍 Buscar..."
+            placeholder="Buscar…"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="w-full sm:w-64 px-4 py-2 rounded-full bg-white/10 placeholder-white/60 text-white backdrop-blur-sm focus:bg-white/20 transition"
+            className="w-full sm:w-64 px-4 py-2 rounded-full bg-white/20 text-green-900 placeholder-green-600 focus:bg-white/30 focus:ring-2 focus:ring-green-300/50 outline-none transition"
           />
 
           {/* Categorías */}
-          <div className="relative w-full sm:w-auto">
+          <div className="relative w-full sm:w-40">
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="appearance-none w-full px-4 py-2 pr-10 bg-white/10 border border-white/20 text-white rounded-full backdrop-blur-sm focus:bg-white/20 transition"
+              className="w-full px-4 py-2 rounded-full bg-white/20 text-green-900 placeholder-green-600 focus:bg-white/30 focus:ring-2 focus:ring-green-300/50 outline-none appearance-none transition"
             >
               {categories.map((cat) => (
-                <option
-                  key={cat}
-                  value={cat}
-                  className="bg-purple-900 text-white"
-                >
+                <option key={cat} value={cat} className="text-green-900">
                   {cat}
                 </option>
               ))}
             </select>
-            {/* Flecha */}
             <svg
-              className="pointer-events-none absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/70"
+              className="pointer-events-none absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -133,38 +127,19 @@ export function FloresPage() {
             </svg>
           </div>
 
-          {/* Ordenado */}
-          <div className="relative w-full sm:w-auto">
+          {/* Orden */}
+          <div className="relative w-full sm:w-40">
             <select
               value={sortOrder}
               onChange={(e) => setSortOrder(e.target.value)}
-              className="
-      appearance-none
-      w-full sm:w-auto
-      px-4 py-2 pr-10
-      bg-purple-900/40
-      border border-white/30
-      text-white
-      rounded-full
-      backdrop-blur-sm
-      focus:bg-purple-900/60
-      focus:outline-none focus:ring-2 focus:ring-pink-300/50
-      transition
-    "
+              className="w-full px-4 py-2 rounded-full bg-white/20 text-green-900 placeholder-green-600 focus:bg-white/30 focus:ring-2 focus:ring-green-300/50 outline-none appearance-none transition"
             >
-              <option className="bg-purple-900/60 text-white" value="A-Z">
-                Alfabético A–Z
-              </option>
-              <option className="bg-purple-900/60 text-white" value="Z-A">
-                Alfabético Z–A
-              </option>
-              <option className="bg-purple-900/60 text-white" value="Novedades">
-                Novedades
-              </option>
+              <option value="A-Z">Alfabético A–Z</option>
+              <option value="Z-A">Alfabético Z–A</option>
+              <option value="Novedades">Novedades</option>
             </select>
-
             <svg
-              className="pointer-events-none absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-white/70"
+              className="pointer-events-none absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-green-600"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -185,9 +160,7 @@ export function FloresPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {sorted.map((flor) => (
             <div key={flor.id} className="flip-card">
-              <div
-                className="block bg-white/5 border border-white/20 rounded-3xl shadow-lg backdrop-blur-lg overflow-hidden w-full h-full"
-              >
+              <div className="block bg-white/5 border border-white/20 rounded-3xl shadow-lg backdrop-blur-lg overflow-hidden w-full h-full">
                 <div className="flip-card-inner">
                   {/* Frente */}
                   <div className="flip-card-front">

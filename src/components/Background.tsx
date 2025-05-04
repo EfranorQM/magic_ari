@@ -18,9 +18,9 @@ export const Background: React.FC = () => {
         Array.from({ length: 4 }, (_, i) => ({
           id: i,
           left: `${Math.random() * 100}%`,
-          size: Math.random() * 24 + 18, // 18‑42 px
-          duration: Math.random() * 8 + 10, // 10‑18 s
-          delay: Math.random() * 4, // 0‑4 s
+          size: Math.random() * 24 + 18,
+          duration: Math.random() * 8 + 10,
+          delay: Math.random() * 4,
         }))
       );
 
@@ -31,11 +31,11 @@ export const Background: React.FC = () => {
 
   return (
     <div className="fixed inset-0 -z-20 overflow-hidden">
-      {/* 1) Gradiente base MUY sutil */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0f0e25] to-[#1a1440]" />
+      {/* 1) Fondo pastel liso */}
+      <div className="absolute inset-0 bg-[#EAF3E0]" />
 
-      {/* 2) Ruido mínimo */}
-      <div className="absolute inset-0 bg-[url('/assets/noise.png')] opacity-3 mix-blend-overlay" />
+      {/* 2) Ruido muy sutil */}
+      <div className="absolute inset-0 bg-[url('/assets/noise.png')] opacity-5 mix-blend-overlay" />
 
       {/* 3) Pétalos flotando */}
       {petals.map((p) => (
@@ -55,7 +55,7 @@ export const Background: React.FC = () => {
       {/* 4) Animación */}
       <style>{`
         @keyframes petalFall {
-          0%   { transform: translateY(0) rotate(0deg);   opacity: 0; }
+          0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
           10%  { opacity: 0.7; }
           100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
         }
