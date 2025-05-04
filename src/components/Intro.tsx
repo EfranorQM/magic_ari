@@ -23,15 +23,15 @@ export const Intro: React.FC = () => {
   ];
 
   return (
-    <section className="relative z-10 py-12 md:py-16 px-4">
+    <section className="bg-transparent px-4 pt-24 pb-16 relative z-10">
       {/* Encabezado */}
       <header className="max-w-3xl mx-auto text-center space-y-6">
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
           Bienvenido a <span className="text-pink-300">Magic Ari</span>
         </h1>
         <p className="text-pink-100 text-base sm:text-lg md:text-xl leading-relaxed">
-          En este rincón encantado, cada flor es una historia, cada aroma una emoción. Descubre la belleza
-          de lo natural hecha arte.
+          En este rincón encantado, cada flor es una historia, cada aroma una
+          emoción. Descubre la belleza de lo natural hecha arte.
         </p>
 
         {/* CTA */}
