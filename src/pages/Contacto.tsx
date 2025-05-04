@@ -2,98 +2,101 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-export function ContactoPage() {
+export const ContactoPage: React.FC = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // aquí podrías enviar a un endpoint o service de email
-    console.log("Enviando mensaje:", form);
+    console.log("Enviando mensaje:", form); // aquí llamas a tu API
     setSubmitted(true);
     setForm({ name: "", email: "", message: "" });
+    setTimeout(() => setSubmitted(false), 5000);
   };
 
   return (
-    <section className="py-12 px-6 sm:px-4 max-w-lg mx-auto text-white">
-      {/* Breadcrumbs */}
-      <nav className="text-sm text-white/70 mb-4">
-        <Link to="/" className="hover:text-pink-400">
+    <section className="relative z-10 py-12 md:py-16 px-4 max-w-md mx-auto">
+      {/* breadcrumbs */}
+      <nav className="text-sm text-white/70 mb-6">
+        <Link to="/" className="hover:text-pink-300">
           Inicio
-        </Link>{" "}
-        / <span className="text-pink-300">Contacto</span>
+        </Link>
+        <span className="mx-2">/</span>
+        <span className="text-pink-300">Contacto</span>
       </nav>
 
-      {/* Título */}
-      <h1
-        className="text-4xl font-script text-pink-300 mb-4 text-center"
-        style={{ fontFamily: '"Great Vibes", cursive' }}
-      >
-        Contáctanos
-      </h1>
-      <p className="text-center text-white/80 mb-8">
-        ¿Tienes preguntas, sugerencias o simplemente quieres saludar?  
-        Escríbeme y te responderé lo antes posible. 🌸
-      </p>
+      {/* título + intro */}
+      <header className="text-center space-y-4 mb-10">
+        <h1 className="text-3xl sm:text-4xl font-bold text-white">
+          Contáctanos
+        </h1>
+        <p className="text-pink-100 text-base sm:text-lg leading-relaxed">
+          ¿Tienes preguntas, sugerencias o simplemente quieres saludar?
+          Escríbeme y responderé lo antes posible.
+        </p>
+      </header>
 
+      {/* aviso de envío */}
       {submitted && (
-        <div className="mb-6 p-4 bg-green-500/30 text-green-100 rounded-lg text-center">
+        <div className="mb-6 rounded-lg bg-green-500/20 border border-green-400/40 text-green-100 text-center py-3">
           ¡Gracias! Tu mensaje ha sido enviado.
         </div>
       )}
 
-      {/* Formulario */}
-      <form onSubmit={handleSubmit} className="space-y-6">
+      {/* formulario glass */}
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-6 bg-white/10 backdrop-blur-sm rounded-2xl shadow-md p-6"
+      >
         <div>
-          <label className="block mb-1 text-sm font-medium">Nombre</label>
+          <label className="block mb-1 text-sm text-white/80">Nombre</label>
           <input
-            type="text"
             name="name"
             value={form.name}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/60 backdrop-blur-sm focus:bg-white/20 focus:ring-2 focus:ring-pink-300/50 outline-none transition"
             placeholder="Tu nombre"
+            className="w-full px-4 py-2 rounded-lg bg-white/15 text-white placeholder-white/60 focus:bg-white/20 focus:ring-2 focus:ring-pink-300/50 outline-none transition"
           />
         </div>
 
         <div>
-          <label className="block mb-1 text-sm font-medium">Correo</label>
+          <label className="block mb-1 text-sm text-white/80">Correo</label>
           <input
             type="email"
             name="email"
             value={form.email}
             onChange={handleChange}
             required
-            className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/60 backdrop-blur-sm focus:bg-white/20 focus:ring-2 focus:ring-pink-300/50 outline-none transition"
             placeholder="tu@correo.com"
+            className="w-full px-4 py-2 rounded-lg bg-white/15 text-white placeholder-white/60 focus:bg-white/20 focus:ring-2 focus:ring-pink-300/50 outline-none transition"
           />
         </div>
 
         <div>
-          <label className="block mb-1 text-sm font-medium">Mensaje</label>
+          <label className="block mb-1 text-sm text-white/80">Mensaje</label>
           <textarea
             name="message"
+            rows={5}
             value={form.message}
             onChange={handleChange}
             required
-            rows={5}
-            className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/60 backdrop-blur-sm focus:bg-white/20 focus:ring-2 focus:ring-pink-300/50 outline-none transition resize-none"
-            placeholder="Escribe tu mensaje aquí..."
+            placeholder="Escribe tu mensaje aquí…"
+            className="w-full px-4 py-2 rounded-lg resize-none bg-white/15 text-white placeholder-white/60 focus:bg-white/20 focus:ring-2 focus:ring-pink-300/50 outline-none transition"
           />
         </div>
 
         <button
           type="submit"
-          className="w-full py-3 bg-pink-400 hover:bg-pink-500 text-white font-semibold rounded-full shadow-lg transition"
+          className="w-full py-3 rounded-full bg-pink-500 hover:bg-pink-400 text-white font-medium transition"
         >
-          Enviar Mensaje
+          Enviar mensaje
         </button>
       </form>
     </section>
   );
-}
+};

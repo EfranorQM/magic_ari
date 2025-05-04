@@ -1,6 +1,5 @@
 // src/pages/Flores.tsx
 import { useState, useMemo } from "react";
-import { Link } from "react-router-dom";
 import { floresDestacadas } from "../constants/carruselData";
 
 export function FloresPage() {
@@ -81,15 +80,12 @@ export function FloresPage() {
       `}</style>
 
       {/* Breadcrumbs */}
-      <nav className="text-sm text-white/70 mb-4">
-        <Link to="/" className="hover:text-pink-400">
-          Inicio
-        </Link>{" "}
-        / <span className="text-pink-300">Flores</span>
+      <nav className="text-sm text-white/70 mb-8">
+
       </nav>
 
       {/* Título + Controles */}
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-4 mb-8">
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-8 mb-10">
         <h2 className="text-4xl font-script text-pink-300 drop-shadow-md">
           Todas Nuestras Flores
         </h2>

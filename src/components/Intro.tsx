@@ -1,69 +1,77 @@
 // src/components/Intro.tsx
+import React from "react";
 import { Link } from "react-router-dom";
+import { Flower2, Search, RotateCw } from "lucide-react";
 
-export function Intro() {
+export const Intro: React.FC = () => {
+  const features = [
+    {
+      icon: <Flower2 size={28} className="text-pink-300" />,
+      title: "Variedad única",
+      desc: "Más de 9 flores seleccionadas para ti.",
+    },
+    {
+      icon: <Search size={28} className="text-pink-300" />,
+      title: "Búsqueda ágil",
+      desc: "Filtra por nombre o categoría al instante.",
+    },
+    {
+      icon: <RotateCw size={28} className="text-pink-300" />,
+      title: "Flip‑cards interactivo",
+      desc: "Gira cada tarjeta para ver datos y cuidados.",
+    },
+  ];
+
   return (
-    <section className="relative z-10 px-6 pt-10 pb-4 sm:pt-12 sm:pb-6 text-center flex flex-col items-center">
-      <div className="max-w-3xl">
-        <h2
-          className="text-5xl sm:text-6xl font-bold text-pink-300 drop-shadow-md leading-tight tracking-wide mb-2 sm:mb-4 animate-fade-up"
-          style={{ fontFamily: '"Great Vibes", cursive' }}
-        >
-          Bienvenido a Magic Ari
-        </h2>
-
-        <p className="text-pink-100 text-lg sm:text-xl font-light leading-relaxed mb-6 animate-fade-up delay-200">
-          En este rincón encantado, cada flor es una historia, cada aroma una emoción.
-          Descubre la belleza de lo natural hecha arte. 🌸
+    <section className="relative z-10 py-12 md:py-16 px-4">
+      {/* Encabezado */}
+      <header className="max-w-3xl mx-auto text-center space-y-6">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+          Bienvenido a <span className="text-pink-300">Magic Ari</span>
+        </h1>
+        <p className="text-pink-100 text-base sm:text-lg md:text-xl leading-relaxed">
+          En este rincón encantado, cada flor es una historia, cada aroma una emoción. Descubre la belleza
+          de lo natural hecha arte.
         </p>
 
-        {/* 1. CTA Button */}
+        {/* CTA */}
         <Link
           to="/flores"
-          className="inline-block px-8 py-3 bg-pink-400 hover:bg-pink-500 text-white font-semibold rounded-full shadow-lg backdrop-blur-sm transition animate-fade-up delay-500"
+          className="inline-block px-6 sm:px-8 py-3 bg-pink-500 hover:bg-pink-400 text-white font-medium rounded-full transition"
         >
-          Explorar Flores
+          Explorar flores
         </Link>
+      </header>
+
+      {/* Tarjetas de características */}
+      <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        {features.map(({ icon, title, desc }) => (
+          <article
+            key={title}
+            className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 shadow-md hover:shadow-lg transition hover:-translate-y-1"
+          >
+            <div className="mb-3">{icon}</div>
+            <h3 className="text-lg font-semibold text-white mb-1">{title}</h3>
+            <p className="text-pink-100 text-sm">{desc}</p>
+          </article>
+        ))}
       </div>
 
-      {/* 2. Feature Cards */}
-      <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-4xl animate-fade-up delay-700">
-        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 flex flex-col items-center text-white">
-          <div className="text-4xl mb-2">🌼</div>
-          <h3 className="font-semibold mb-1">Variedad Única</h3>
-          <p className="text-sm">Más de 9 flores seleccionadas para ti.</p>
-        </div>
-        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 flex flex-col items-center text-white">
-          <div className="text-4xl mb-2">🔍</div>
-          <h3 className="font-semibold mb-1">Búsqueda Ágil</h3>
-          <p className="text-sm">Filtra por nombre o categoría al instante.</p>
-        </div>
-        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 flex flex-col items-center text-white">
-          <div className="text-4xl mb-2">🔄</div>
-          <h3 className="font-semibold mb-1">Flip-Cards Interactivo</h3>
-          <p className="text-sm">Gira cada tarjeta para ver datos y cuidados.</p>
-        </div>
+      {/* Indicador scroll */}
+      <div className="mt-14 flex justify-center">
+        <span className="text-pink-200 text-2xl animate-fade-bounce">↓</span>
       </div>
 
-      {/* 3. Scroll Indicator */}
-      <div className="mt-16 animate-bounce text-pink-200 text-3xl">
-        ↓
-      </div>
-
-      {/* Animaciones */}
+      {/* Animación ↓ suave */}
       <style>{`
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to   { opacity: 1; transform: translateY(0); }
+        @keyframes fadeBounce {
+          0%, 100% { opacity: .2; transform: translateY(0); }
+          50%      { opacity: .8; transform: translateY(6px); }
         }
-        .animate-fade-up {
-          animation: fadeUp 1s ease-out forwards;
-          opacity: 0;
+        .animate-fade-bounce {
+          animation: fadeBounce 1.8s ease-in-out infinite;
         }
-        .delay-200 { animation-delay: 0.2s; }
-        .delay-500 { animation-delay: 0.5s; }
-        .delay-700 { animation-delay: 0.7s; }
       `}</style>
     </section>
   );
-}
+};
